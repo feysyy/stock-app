@@ -1,0 +1,17 @@
+<p>User: <%= current_user.email %></p>
+<br>
+<p>Count: <%= @users.count %> </p>
+
+<div>
+  <% @users.each do |user| %>
+    <p> <%= user.email %> </p>
+    <%= link_to "View", admin_user_path(user) %>
+  <% end %>
+</div>
+<br>
+<% if user_signed_in? %>
+  <%= link_to "Log-out", destroy_user_session_path, data: {
+    "turbo-method": :delete,
+    "turbo-confirm": "Continue" } 
+  %>
+<% end %>

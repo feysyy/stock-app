@@ -1,0 +1,33 @@
+<%#= Home Page with Sign in and Sign up only %>
+<section>
+  <% unless user_signed_in? %>
+    <h1>HOME PAGE</h1>
+    <div>
+      <%= link_to "Sign-up", new_user_registration_path %>
+      <br>
+      <%= link_to "Log-in", new_user_session_path %>
+    </div>
+  <% end %>
+</section>
+
+<%#= Home page of user after sign-in  %>
+<section>
+  <% if user_signed_in? %>
+    <h1>Stock Trading</h1>
+    <p>User: <%= current_user.email %></p>
+    <p>Balance: <%= current_user.balance %></p>
+    <p>Status: 
+      <% if current_user.approved == true %>
+        Approved
+      <% else %>
+        Pending
+      <% end %>
+    </p>
+    <div>
+      <%= link_to "Log-out", destroy_user_session_path, data: {
+        "turbo-method": :delete,
+        "turbor-confirm": "Continue" } 
+      %>
+    </div>
+  <% end %>
+</section>
