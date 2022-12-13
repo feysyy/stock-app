@@ -14,10 +14,9 @@
 <section>
   <% if user_signed_in? %>
     <h1>Stock Trading</h1>
-    <p>User: <%= current_user.email %></p>
-    <p>Balance: <%= current_user.balance %></p>
-    <p>Status: <%= current_user.status %>
-    </p>
+    <p>User: <%= current_user.email %> </p>
+    <p>Balance: <%= current_user.balance %> </p>
+    <p>Status: <%= current_user.status %> </p>
     <div>
       <%= link_to "Log-out", destroy_user_session_path, data: {
         "turbo-method": :delete,

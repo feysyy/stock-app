@@ -7,8 +7,8 @@ class User < ApplicationRecord
   
   def status
     if self.approved
-      "Approved"
+     return "Verified"
     end
-    "Pending"
+      "Pending"
   end
 end
