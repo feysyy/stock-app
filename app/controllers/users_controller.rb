@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  
   def index
   end
 
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   def show
   end
 
-  def new
+  def edit
   end
 
   def update

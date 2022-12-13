@@ -16,12 +16,7 @@
     <h1>Stock Trading</h1>
     <p>User: <%= current_user.email %></p>
     <p>Balance: <%= current_user.balance %></p>
-    <p>Status: 
-      <% if current_user.approved == true %>
-        Approved
-      <% else %>
-        Pending
-      <% end %>
+    <p>Status: <%= current_user.status %>
     </p>
     <div>
       <%= link_to "Log-out", destroy_user_session_path, data: {
