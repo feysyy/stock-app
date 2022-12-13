@@ -1,6 +1,10 @@
-<p>User: <%= current_user.email %></p>
-<br>
-<p>Count: <%= @users.count %> </p>
+<div>
+  <p>User: <%= current_user.email %></p>
+  <br>
+  <%= link_to "Create User", new_admin_user_path %>
+  <br>
+  <p>Count: <%= @users.count %> </p>
+</div>
 
 <div>
   <% @users.each do |user| %>
