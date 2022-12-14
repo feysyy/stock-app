@@ -8,6 +8,11 @@
   <br>
   <%= link_to "Edit", edit_admin_user_path(@user) %>
   <br>
+  <%= link_to "Delete", admin_user_path(@user), data: {
+    "turbo-method": :delete,
+    "turbo-confirm": "Continue" } 
+  %>
+  <br>
   <%= link_to "Back", admin_users_path %>
 
 </section>
