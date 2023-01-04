@@ -1,8 +1,29 @@
 class ApprovalMailer < ApplicationMailer
-  def account_approve(user)
-    @user = user.email
-    @greeting = "Greetings from ... app team"
+  layout "approval_email_layout"
 
-    mail to: @user, subject: "Account Approval"
+  default(
+    from: "fey stock app <trading.app.sample4@gmail.com>",
+    reply_to: "fey stock app <trading.app.sample4@gmail.com>",
+    template_path: "approval_mailer"
+  )
+
+  def approval_email(user:)
+    @user = user
+
+    mail(
+      to: @user.email,
+      subject: "Your account has been approved to trade",
+      template_name: "approval_email"
+    )
+  end
+
+  def unapprove_email(user:)
+    @user = user
+
+    mail(
+      to: @user.email,
+      subject: "Your account has been unapproved to trade",
+      template_name: "unapprove_email"
+    )
   end
 end
