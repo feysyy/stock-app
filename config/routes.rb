@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  get "/portfolio", to: "portfolio#display", as: 'portfolio_display'
-
+  get '/portfolio', to: "portfolio#display", as: 'portfolio_display'
+  get '/marketplace', to: 'marketplace#display', as: 'marketplace_display'
+  post '/marketplace/add', to: 'stocks#create', as: 'add_stock'
+  get '/portfolio/stock/:symbol', to: 'portfolio#show_stock', as: 'show_stock'
+  post '/stock/:id/new_order', to: 'orders#create', as: 'order_stock'
 end
