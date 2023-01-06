@@ -4,5 +4,8 @@
     <p> <%= stock.symbol %> </p>
     <p> <%= stock.latest_price %> </p>
     <br>
+    <%= link_to "View", show_stock_path(symbol: stock.symbol) %>
   <% end %>
 </div>
+
+<%= link_to "Back", root_path %>

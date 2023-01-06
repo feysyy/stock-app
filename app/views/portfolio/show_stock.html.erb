@@ -1,0 +1,38 @@
+<div>
+  <p><%= @stock.company_name%> </p>
+  <p> <%= @stock.symbol %> </p>
+  <p> <%= @stock.latest_price %> </p>
+  <p> <%= @stock.quantity %> </p>
+</div>
+
+<div>
+
+  <div>
+   <%= form_with model: [@stock, @order], url: "/stock/#{@stock.id}/new_order" do |f| %>
+      <%= f.hidden_field order_type: true %>
+
+      <div>
+        <%= f.number_field :quantity %>
+      </div>
+
+      <div>
+        <%= f.submit "Buy" %>
+      </div>
+    <% end %>
+  </div>
+  <br/>
+  <div>
+    <%= form_with model: [@stock, @order], url: "/stock/#{@stock.id}/new_order" do |f| %>
+      <%= f.hidden_field order_type: false  %>
+      <div>
+        <%= f.number_field :quantity %>
+      </div>
+
+      <div>
+        <%= f.submit "Sell" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "back", portfolio_display_path %>

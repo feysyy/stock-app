@@ -1,0 +1,9 @@
+<div>
+  <% @list.each do |item| %>
+    <p> <%= item.company_name %> - <span> <%= item.symbol %> </span></p>
+    <p>  <%= item.latest_price %> </p>
+    <%= button_to "Add to Portfolio", add_stock_path(symbol: item.symbol) %>
+  <% end %>
+</div>
+
+<%= link_to "back", root_path %>
