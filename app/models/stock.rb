@@ -9,6 +9,10 @@ class Stock < ApplicationRecord
     Fetcher.get_latest_price(acronym: symbol)
   end
 
+  def user
+    User.find(user_id)
+  end
+
   private
 
   def save_iex_details
