@@ -1,11 +1,12 @@
 <div>
   <% @stocks.each do |stock| %>
-    <p> <%= stock.company_name %> </p>
-    <p> <%= stock.symbol %> </p>
-    <p> <%= stock.latest_price %> </p>
+    <p>Company: <%= stock.company_name %> - <span> <%= stock.symbol %> </span>  </p>
+    <p>Price: <%= stock.latest_price %> </p>
+    <p>Shares: <%= stock.quantity %> </p>
     <br>
     <%= link_to "View", show_stock_path(symbol: stock.symbol) %>
   <% end %>
 </div>
-
+<br/>
+<br/>
 <%= link_to "Back", root_path %>

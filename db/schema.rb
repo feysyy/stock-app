@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_132454) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_112330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.integer "quantity"
+    t.float "quantity", default: 0.0
     t.bigint "user_id", null: false
     t.bigint "stock_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "order_type"
+    t.string "order_type"
+    t.float "total"
     t.index ["stock_id"], name: "index_orders_on_stock_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -28,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_132454) do
   create_table "stocks", force: :cascade do |t|
     t.string "company_name"
     t.string "symbol"
-    t.integer "quantity"
+    t.float "quantity", default: 0.0
     t.string "logo"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

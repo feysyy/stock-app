@@ -7,5 +7,6 @@ class PortfolioController < ApplicationController
   def show_stock
     @stock = Stock.find_by(symbol: params[:symbol])
     @order = @stock.orders.new
+    @balance = @stock.user.balance
   end
 end

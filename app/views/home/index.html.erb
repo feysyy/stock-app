@@ -16,7 +16,7 @@
     <h1>Stock Trading</h1>
     <h2>Profile</h2>
     <p> <%= link_to "My Portfolio", portfolio_display_path %> </p>
-    <p> <%= link_to "Marketplace", marketplace_display_path %> </p>
+    <p> <%= link_to "Marketplace", marketplace_display_path, target: '_blank' %> </p>
     <p>User: <%= current_user.email %> </p>
     <p>Balance: <%= current_user.balance %> </p>
     <p>Status: <%= current_user.status %> </p>
