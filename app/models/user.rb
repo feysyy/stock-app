@@ -24,6 +24,10 @@ class User < ApplicationRecord
       "Pending"
   end
 
+  def approved?
+    self.approved
+  end
+
   private
 
   def send_approval_email
