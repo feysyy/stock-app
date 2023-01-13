@@ -20,6 +20,45 @@
     <p>User: <%= current_user.email %> </p>
     <p>Balance: <%= current_user.balance %> </p>
     <p>Status: <%= current_user.status %> </p>
+
+
+    <% if current_user.approved? %>
+      <h1>HISTORY</h1>
+      <table>
+        <thead>
+          <tr>
+            <th> Acronym </th>
+            <th> Company Name </th>
+            <th> Stock Price </th>
+            <th> Quantity </th>
+            <th> Total </th>
+            <th> Action </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% unless @orders.blank? %>
+            <% @orders.each do |order| %>
+              <tr>
+                <td> <%= order.stock.symbol %> </td>
+                <td> <%= order.stock.company_name %> </td>
+                <td> <%= order.total / order.quantity %> </td>
+                <td> <%= order.quantity %> </td>
+                <td> <%= order.total %> </td>
+                <td> <%= order.order_type %> </td>
+              </tr>
+             <% end %>
+          <% else %>
+            <tr>
+              <td>You have no orders yet.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
+   
+
     <div>
       <%= link_to "Log-out", destroy_user_session_path, data: {
         "turbo-method": :delete,
