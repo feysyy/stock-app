@@ -1,18 +1,19 @@
-<section>
-  <div>
+<section class="text-white">
+  <%= link_to "Back", admin_users_path%>
+  <div class="mt-4">
     <p>User: <%= @user.email %> </p>
     <p>Balance <%= @user.balance %> </p>
     <p>Role: <%= @user.role %> </p>
     <p>Approved: <%= @user.approved %> </p>
   </div>
   <br>
-  <%= link_to "Edit", edit_admin_user_path(@user) %>
-  <br>
-  <%= link_to "Delete", admin_user_path(@user), data: {
-    "turbo-method": :delete,
-    "turbo-confirm": "Continue" } 
-  %>
-  <br>
-  <%= link_to "Back", admin_users_path %>
+  <div class="flex">
+    <%= link_to "Edit", edit_admin_user_path(@user), class: "mr-4" %>
+    <%= link_to "Delete", admin_user_path(@user), data: {
+      "turbo-method": :delete,
+      "turbo-confirm": "Continue" }, 
+      class: "mr-4" 
+    %>
+  </div>
 
 </section>

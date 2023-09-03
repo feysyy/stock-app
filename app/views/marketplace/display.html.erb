@@ -1,9 +1,15 @@
-<div>
-  <% @list.each do |item| %>
-    <p> <%= item.company_name %> - <span> <%= item.symbol %> </span></p>
-    <p>  <%= item.latest_price %> </p>
-    <%= button_to "Add to Portfolio", add_stock_path(symbol: item.symbol) %>
-  <% end %>
-</div>
+<p class="mt-2">
+  <%= link_to "Back", root_path, class: "text-white ml-4 px-2 border rounded-xl" %>
+</p>
 
-<%= link_to "back", root_path %>
+<section class="text-white border-2 w-11/12 ml-auto mr-auto mt-10">
+  <div class="grid grid-cols-4">
+    <% @list.each do |item| %>
+      <div class="border-2 rounded-xl m-4 py-4 px-2 text-center">
+        <p> <%= item.company_name %> - <span> <%= item.symbol %> </span></p>
+        <p>  <%= item.latest_price %> </p>
+        <%= button_to "Add to Portfolio", add_stock_path(symbol: item.symbol), class: "border rounded-xl px-2" %>
+      </div>
+    <% end %>
+  </div>
+</section>

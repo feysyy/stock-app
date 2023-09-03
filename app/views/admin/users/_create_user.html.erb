@@ -1,41 +1,44 @@
-<%= form_with model: [:admin, @user] do |form| %>
-  <div>
-    <%= form.label :email %>
-    <br>
-    <%= form.email_field :email %>
-  </div>
+<section class="text-white">
+  <%= form_with model: [:admin, @user] do |form| %>
+    <div>
+      <%= form.label :email %>
+      <br>
+      <%= form.email_field :email, class: "text-black" %>
+    </div>
 
-  <div>
-    <%= form.label :password %>
-    <br>
-    <%= form.password_field :password %>
-  </div>
+    <div>
+      <%= form.label :password %>
+      <br>
+      <%= form.password_field :password, class: "text-black" %>
+    </div>
 
-  <div>
-    <%= form.label :password_confirmation %>
-    <br>
-    <%= form.password_field :password_confirmation %>
-  </div>
+    <div>
+      <%= form.label :password_confirmation %>
+      <br>
+      <%= form.password_field :password_confirmation, class: "text-black" %>
+    </div>
 
-  <div>
-    <%= form.label :balance %> 
-    <br>
-    <%= form.number_field :balance %>
-  </div>
+    <div>
+      <%= form.label :balance %> 
+      <br>
+      <%= form.number_field :balance, class: "text-black" %>
+    </div>
+    
+    <div>
+      <%= form.label :role %>
+      <br>
+      <%= form.text_field :role, class: "text-black" %>
+    </div>
   
-  <div>
-    <%= form.label :role %>
-    <br>
-    <%= form.text_field :role %>
-  </div>
- 
-  <div>
-    <%= form.label :approved %>
-    <br>
-    <%= form.check_box :approved %>
-  </div>
+    <div class="flex items-center">
+      <%= form.label :approved %>
+      <br>
+      <%= form.check_box :approved, class: "text-black ml-2" %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="border rounded-xl w-32 text-center mt-4">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+</section>

@@ -1,23 +1,25 @@
-<%= form_with model: [:admin, @user] do |form| %>
-  <div>
-    <%= form.label :balance %>
+<section class="text-white">
+  <%= form_with model: [:admin, @user] do |form| %>
+    <div>
+      <%= form.label :balance %>
+      <br>
+      <%= form.number_field :balance %>
+    </div>
     <br>
-    <%= form.number_field :balance %>
-  </div>
-  <br>
-  <div>
-    <%= form.label :role %>
+    <div>
+      <%= form.label :role %>
+      <br>
+      <%= form.text_field :role %>
+    </div>
     <br>
-    <%= form.text_field :role %>
-  </div>
-  <br>
-  <div>
-    <%= form.label :approved %>
-    <%= form.check_box :approved %>
-  </div>
-  <br>
-  <div>
-    <%= form.submit %>
-  </div>
-  <br>
-<% end %>
+    <div>
+      <%= form.label :approved %>
+      <%= form.check_box :approved %>
+    </div>
+    <br>
+    <div>
+      <%= form.submit %>
+    </div>
+    <br>
+  <% end %>
+</section>

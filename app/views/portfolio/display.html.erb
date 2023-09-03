@@ -1,12 +1,17 @@
-<div>
-  <% @stocks.each do |stock| %>
-    <p>Company: <%= stock.company_name %> - <span> <%= stock.symbol %> </span>  </p>
-    <p>Price: <%= stock.latest_price %> </p>
-    <p>Shares: <%= stock.quantity %> </p>
-    <br>
-    <%= link_to "View", show_stock_path(symbol: stock.symbol) %>
-  <% end %>
-</div>
-<br/>
-<br/>
-<%= link_to "Back", root_path %>
+<p class="mt-2">
+  <%= link_to "Back", root_path, class: "text-white border rounded-xl px-2 ml-4" %>
+</p>
+
+<p class="text-white text-2xl ml-8 mt-8">My Portfolio:</p>
+<section class="text-white border-2 w-11/12 ml-auto mr-auto mt-10">
+  <div class="grid grid-cols-4">
+    <% @stocks.each do |stock| %>
+      <div class="border-2 rounded-xl m-4 py-2 px-2 text-center">
+        <p>Company: <%= stock.company_name %> - <span> <%= stock.symbol %> </span>  </p>
+        <p>Price: <%= stock.latest_price %> </p>
+        <p class="mb-2">Shares: <%= stock.quantity %> </p>
+        <%= link_to "View", show_stock_path(symbol: stock.symbol), class: "border rounded-xl px-2" %>
+      </div>
+    <% end %>
+  </div>
+</section>

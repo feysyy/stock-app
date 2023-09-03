@@ -1,69 +1,82 @@
 <%#= Home Page with Sign in and Sign up only %>
-<section>
+<section class="text-white">
   <% unless user_signed_in? %>
-    <h1>HOME PAGE</h1>
-    <div>
-      <%= link_to "Sign-up", new_user_registration_path %>
-      <br>
-      <%= link_to "Log-in", new_user_session_path %>
+    <div class="flex justify-between">
+      <div>
+        <p class="pt-2 pl-4 text-4xl cursor-default">TMH Inc</p> 
+      </div>
+      <div class="flex items-center">
+        <%= link_to "Log-in", new_user_session_path, class: "mr-12 mt-2 px-2 border-2 rounded-xl" %>
+        <br>
+        <%= link_to "Sign-up", new_user_registration_path, class: "mr-12 mt-2 px-2 border-2 rounded-xl" %>
+      </div>   
     </div>
   <% end %>
 </section>
 
 <%#= Home page of user after sign-in  %>
-<section>
+<section class="text-white">
   <% if user_signed_in? %>
-    <h1>Stock Trading</h1>
-    <h2>Profile</h2>
-    <p> <%= link_to "My Portfolio", portfolio_display_path %> </p>
-    <p> <%= link_to "Marketplace", marketplace_display_path, target: '_blank' %> </p>
-    <p>User: <%= current_user.email %> </p>
-    <p>Balance: <%= current_user.balance %> </p>
-    <p>Status: <%= current_user.status %> </p>
+    <div class="flex flex-row justify-between">
+      <p class="text-2xl p-4 ml-4 cursor-default">TMH INC</p>
+
+      <div class="flex flex-row items-center px-8">
+        <p class="mr-6 cursor-default">Balance: <%= number_with_precision(current_user.balance, precision: 2) %> </p>
+        <p class="mr-6 border rounded-xl px-4"> <%= link_to "My Portfolio", portfolio_display_path %> </p>
+        <p class="mr-6 border rounded-xl px-4"> <%= link_to "Marketplace", marketplace_display_path, target: '_blank' %> </p>
+      </div>
+
+      <div class="flex flex-col mt-4 mr-4">
+        <p class="cursor-default">User: <%= current_user.email %> </p>
+        <p class="cursor-default">Status: <%= current_user.status %> </p>
+        <p class="mt-2">
+          <%= link_to "Log-out", destroy_user_session_path, data: {
+            "turbo-method": :delete,
+            "turbor-confirm": "Continue" },
+            class: "border-2 rounded-xl px-4"
+          %>
+        </p>
+
+
+      </div>
+    </div>
 
 
     <% if current_user.approved? %>
-      <h1>HISTORY</h1>
-      <table>
-        <thead>
-          <tr>
-            <th> Acronym </th>
-            <th> Company Name </th>
-            <th> Stock Price </th>
-            <th> Quantity </th>
-            <th> Total </th>
-            <th> Action </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% unless @orders.blank? %>
-            <% @orders.each do |order| %>
-              <tr>
-                <td> <%= order.stock.symbol %> </td>
-                <td> <%= order.stock.company_name %> </td>
-                <td> <%= order.total / order.quantity %> </td>
-                <td> <%= order.quantity %> </td>
-                <td> <%= order.total %> </td>
-                <td> <%= order.order_type %> </td>
-              </tr>
-             <% end %>
-          <% else %>
+      <div class="w-2/3 flex flex-col ml-auto mr-auto mt-14">
+        <p class="mt-4 ml-10 text-2xl">HISTORY</p>
+        <table class="mt-6 ml-10">
+          <thead>
             <tr>
-              <td>You have no orders yet.</td>
+              <th class="border-2 px-4"> Acronym </th>
+              <th class="border-2 px-4"> Company Name </th>
+              <th class="border-2 px-4"> Stock Price </th>
+              <th class="border-2 px-4"> Quantity </th>
+              <th class="border-2 px-8"> Total </th>
+              <th class="border-2 px-4"> Action </th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
+          </thead>
 
-   
-
-    <div>
-      <%= link_to "Log-out", destroy_user_session_path, data: {
-        "turbo-method": :delete,
-        "turbor-confirm": "Continue" }
-      %>
-    </div>
+          <tbody>
+            <% unless @orders.blank? %>
+              <% @orders.each do |order| %>
+                <tr class="text-center">
+                  <td class="border-2"> <%= order.stock.symbol %> </td>
+                  <td class="border-2"> <%= order.stock.company_name %> </td>
+                  <td class="border-2"> <%= order.total / order.quantity %> </td>
+                  <td class="border-2"> <%= number_with_precision(order.quantity, precision: 2)%> </td>
+                  <td class="border-2"> <%= number_with_precision(order.total, precision: 2) %> </td>
+                  <td class="border-2"> <%= order.order_type %> </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td>You have no orders yet.</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      </div>
   <% end %>
 </section>
