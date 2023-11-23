@@ -23,6 +23,6 @@ RSpec.describe User, type: :model do
     it "should have a default value 'false' " do
       expect(user.approved == false).to be true
     end
-  end
+  end 
 
 end
